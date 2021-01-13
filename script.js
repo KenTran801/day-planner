@@ -63,6 +63,7 @@ for (let i = 0; i < calendlyTimes.length; i++) {
     createHour.addClass("hour col-2");
     createHour.text(calendlyTimes[i]);
 
+    
     // creating the buttons for each row
     var createBtn = $("<button>");
     createBtn.addClass("saveBtn col-1 fab fa-jedi-order fa-3x");
