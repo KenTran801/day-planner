@@ -20,7 +20,8 @@
 // import {DateTime } from 'luxon';
 // var currentDayEl = DateTime.local();
 
-// moment is not working (WTF? Now it's working)
+// moment is not working 
+// (WTF? Now it's working)
 var currentDayEl = moment().format('MMMM Do YYYY, h:mm:ss a');
 
 var calendlyTimes = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM"];
@@ -31,32 +32,45 @@ $("#currentDay").append(currentDayEl);
 // create rows user can input data
 // create button
 for (let i = 0; i < calendlyTimes.length; i++) { 
+
+    // refrring to activities
     // var createRow = $(".row").text(calendlyTimes[i]);
-    // var createTimeBlock = $(".time-block").text(calendlyTimes[i]);
+    // var createTextArea = $("textarea").text(calendlyTimes[i]);
     // var createHour = $(".hour").text(calendlyTimes[i]);
+
+    var createTimeBlocks = $("<div>");
+    createTimeBlocks.addClass("time-block");
+    // creating new rows
     var createRow = $("<div>");
     createRow.addClass("row");
     // createRow.text(calendlyTimes[i]);
-    createRow.text("ROW PLACE HOLDER");
+    // createRow.text("ROW PLACE HOLDER");
 
-    var createTimeBlock = $("<div>");
-    createTimeBlock.addClass("time-block col-9");
-    // createTimeBlock.text(calendlyTimes[i])
-    createTimeBlock.text("TIME-BLOCK PLACE-HOLDER TEXT")
+    // creating createTextArea for each row
+    var createTextArea = $("<div>");
+    createTextArea.addClass("textarea col-9");
+    // createTextArea.text(calendlyTimes[i])
+    createTextArea.text("TEXT AREA PLACE-HOLDER TEXT, REMINDER TO EDIT FONT")
 
+    // creating hour column which will populate with the times for each row
     var createHour = $("<div>");
     createHour.addClass("hour col-2");
     createHour.text(calendlyTimes[i]);
 
+    // creating the buttons for each row
     var createBtn = $("<button>");
     createBtn.addClass("saveBtn col-1 fab fa-jedi-order fa-3x");
     createBtn.addClass("saveBtn i:hover");
     // createBtn.text("BUTTON PLACEHOLDER")
 
-    $(".container").append(createRow);
-    createRow.append(createHour);
-    createRow.append(createTimeBlock);
-    createRow.append(createBtn);
+    // appending new time block div to the container class in the HTML file
+    $(".container").append(createTimeBlocks);
+     // appending new row div to the time-block div
+    createTimeBlocks.append(createRow);
+    // appending new elements to the new row to appear in the time-block div below the container
+    createRow.append(createHour, createTextArea, createBtn);
+    // createRow.append(createTextArea);
+    // createRow.append(createBtn);
 }
 // THEN each time block is color-coded to indicate whether it is in the past, present, or future
 // WHEN I click into a time block
