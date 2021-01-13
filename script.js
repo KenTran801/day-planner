@@ -52,10 +52,11 @@ for (let i = 0; i < calendlyTimes.length; i++) {
     // createRow.text("ROW PLACE HOLDER");
 
     // creating createTextArea for each row
-    var createTextArea = $("<div>");
+    // var createTextArea = $("<div>");
+    var createTextArea = $("<input>");
     createTextArea.addClass("textarea col-9");
     // createTextArea.text(calendlyTimes[i])
-    createTextArea.text("TEXT AREA PLACE-HOLDER TEXT, REMINDER TO EDIT FONT")
+    // createTextArea.text("TEXT AREA PLACE-HOLDER TEXT, REMINDER TO EDIT FONT")
 
     // creating hour column which will populate with the times for each row
     var createHour = $("<div>");
@@ -78,6 +79,9 @@ for (let i = 0; i < calendlyTimes.length; i++) {
     // createRow.append(createBtn);
 }
 // THEN each time block is color-coded to indicate whether it is in the past, present, or future
+
+// ASk TA about this step is it possible to parse int current time array? (8:00am) or create/remove class with if statement?
+
 // WHEN I click into a time block
 // THEN I can enter an event
 // WHEN I click the save button for that time block
