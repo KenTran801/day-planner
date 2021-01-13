@@ -13,20 +13,62 @@
 // THEN the saved events persist
 // ```
 
-// Create variables
 
+// Create variables
+// ask TA or Tutor
+// attempted ti user luxon with BCS learning help, could not figure it out
+// import {DateTime } from 'luxon';
+// var currentDayEl = DateTime.local();
+
+// moment is not working (WTF? Now it's working)
 var currentDayEl = moment().format('MMMM Do YYYY, h:mm:ss a');
 
+var calendlyTimes = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM"];
+
 // Display current time on page
-$("#currentDay").append(currentDayEl)
+$("#currentDay").append(currentDayEl);
+// create for loop to that will 
+// create rows user can input data
+// create button
+for (let i = 0; i < calendlyTimes.length; i++) { 
+    // var createRow = $(".row").text(calendlyTimes[i]);
+    // var createTimeBlock = $(".time-block").text(calendlyTimes[i]);
+    // var createHour = $(".hour").text(calendlyTimes[i]);
+    var createRow = $("<div>");
+    createRow.addClass("row");
+    // createRow.text(calendlyTimes[i]);
+    // createRow.text("ROW PLACE HOLDER");
 
-// create for loop to that will create rows amd 
+    var createTimeBlock = $("<div>");
+    createTimeBlock.addClass("time-block col-8");
+    // createTimeBlock.text(calendlyTimes[i])
+    createTimeBlock.text("TIME-BLOCK PLACE-HOLDER TEXT")
 
+    var createHour = $("<div>");
+    createHour.addClass("hour col-2");
+    createHour.text(calendlyTimes[i]);
+
+    var createBtn = $("<button>");
+    createBtn.addClass("saveBtn col-1 fab fa-jedi-order fa-4x");
+    // createBtn.text("BUTTON PLACEHOLDER")
+
+    $(".container").append(createRow);
+    createRow.append(createHour);
+    createRow.append(createTimeBlock);
+    createRow.append(createBtn);
+}
+// THEN each time block is color-coded to indicate whether it is in the past, present, or future
+// WHEN I click into a time block
+// THEN I can enter an event
+// WHEN I click the save button for that time block
+// THEN the text for that event is saved in local storage
 
 
 // locale storage to save event (button)
 // locale storage (getitem)
 // locale storage (setItem)
+
+
 
 
 //  reference code from activity which inspired idea 
