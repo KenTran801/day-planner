@@ -17,30 +17,35 @@
 // Create variables
 // ask TA or Tutor
 // attempted ti user luxon with BCS learning help, could not figure it out
+
 // import {DateTime } from 'luxon';
 // var currentDayEl = DateTime.local();
 
 // moment is not working 
 // (WTF? Now it's working)
-var currentDayEl = moment().format('MMMM Do YYYY, h:mm:ss a');
+var currentDayEl = moment().format('MMMM Do YYYY');
+var currentTime = moment().format('h:mm:ss a')
 
-var calendlyTimes = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM"];
+var calendlyTimes = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM",];
 
-// Display current time on page
+// Display current date/time on page
 $("#currentDay").append(currentDayEl);
+$("#timeDisplay").append("Time: " + currentTime);
+
 // create for loop to that will 
 // create rows user can input data
-// create button
+// create button for each row
 for (let i = 0; i < calendlyTimes.length; i++) { 
-
     // refrring to activities
     // var createRow = $(".row").text(calendlyTimes[i]);
     // var createTextArea = $("textarea").text(calendlyTimes[i]);
     // var createHour = $(".hour").text(calendlyTimes[i]);
 
+    // creating new time-block div
     var createTimeBlocks = $("<div>");
     createTimeBlocks.addClass("time-block");
-    // creating new rows
+
+    // creating new row div
     var createRow = $("<div>");
     createRow.addClass("row");
     // createRow.text(calendlyTimes[i]);
@@ -82,9 +87,6 @@ for (let i = 0; i < calendlyTimes.length; i++) {
 // locale storage to save event (button)
 // locale storage (getitem)
 // locale storage (setItem)
-
-
-
 
 //  reference code from activity which inspired idea 
 
