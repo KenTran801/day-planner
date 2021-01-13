@@ -18,7 +18,7 @@
 var currentDayEl = moment().format('MMMM Do YYYY, h:mm:ss a');
 
 // Display current time on page
-currentDayDiv$("#currentDay")
+$("#currentDay").append(currentDayEl)
 
 // create for loop to that will create rows amd 
 
