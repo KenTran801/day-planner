@@ -31,17 +31,18 @@ $("#currentDay").append(currentDayEl);
 // create rows user can input data
 // create button
 for (let i = 0; i < calendlyTimes.length; i++) { 
-    // var createRow = $(".row").text(calendlyTimes[i]);
-    // var createTimeBlock = $(".time-block").text(calendlyTimes[i]);
-    // var createHour = $(".hour").text(calendlyTimes[i]);
+    var createRow = $(".row").text(calendlyTimes[i]);
+    var createTimeBlock = $(".time-block").text(calendlyTimes[i]);
+    var createHour = $(".hour").text(calendlyTimes[i]);
+
     var createRow = $("<div>");
     createRow.addClass("row");
-    // createRow.text(calendlyTimes[i]);
-    // createRow.text("ROW PLACE HOLDER");
+    createRow.text(calendlyTimes[i]);
+    createRow.text("ROW PLACE HOLDER");
 
     var createTimeBlock = $("<div>");
     createTimeBlock.addClass("time-block col-8");
-    // createTimeBlock.text(calendlyTimes[i])
+    createTimeBlock.text(calendlyTimes[i])
     createTimeBlock.text("TIME-BLOCK PLACE-HOLDER TEXT")
 
     var createHour = $("<div>");
@@ -50,7 +51,7 @@ for (let i = 0; i < calendlyTimes.length; i++) {
 
     var createBtn = $("<button>");
     createBtn.addClass("saveBtn col-1 fab fa-jedi-order fa-4x");
-    // createBtn.text("BUTTON PLACEHOLDER")
+    createBtn.text("BUTTON PLACEHOLDER")
 
     $(".container").append(createRow);
     createRow.append(createHour);
