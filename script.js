@@ -24,9 +24,12 @@
 // moment is not working 
 // (WTF? Now it's working)
 var currentDayEl = moment().format('MMMM Do YYYY');
-var currentTime = moment().format('h:mm:ss a')
+var currentTime = moment().format('h');
+// set timeout function
 
 var calendlyTimes = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM",];
+//  create new var
+var currentTimeAttr = moment().format('h')
 
 // Display current date/time on page
 $("#currentDay").append(currentDayEl);
@@ -57,6 +60,9 @@ for (let i = 0; i < calendlyTimes.length; i++) {
     createTextArea.addClass("textarea col-9");
     // createTextArea.text(calendlyTimes[i])
     // createTextArea.text("TEXT AREA PLACE-HOLDER TEXT, REMINDER TO EDIT FONT")
+    // data attri calendlyTimes[i]
+    // if statement less than new var currenttimeAttr
+    // add/remove class from CSS file
 
     // creating hour column which will populate with the times for each row
     var createHour = $("<div>");
