@@ -24,25 +24,93 @@
 // moment is not working 
 // (WTF? Now it's working)
 var currentDayEl = moment().format('MMMM Do YYYY');
-var currentTime = moment().format('h');
+var currentTime = moment().format('h:mm A');
 // set timeout function
 
-var calendlyTimes = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM",];
+var calendlyTimes = [
+  {
+    normalTime: "8:00 AM",
+    timeValue: 8,
+  },
+
+  {
+    normalTime: "9:00 AM",
+    timeValue: 9,
+  },
+  
+  {
+    normalTime: "10:00 AM",
+    timeValue: 10,
+  },
+  
+  {
+    normalTime: "11:00 AM",
+    timeValue: 11,
+  },
+  
+  {
+    normalTime: "12:00 PM",
+    timeValue: 12,
+  },
+  
+  {
+    normalTime: "1:00 PM",
+    timeValue: 13,
+  },
+  
+  {
+    normalTime: "2:00 PM",
+    timeValue: 14,
+  },
+  
+  {
+    normalTime: "3:00 PM",
+    timeValue: 15,
+  },
+  
+  {
+    normalTime: "4:00 PM",
+    timeValue: 16,
+  },
+  
+  {
+    normalTime: "5:00 PM",
+    timeValue: 17,
+  },
+  
+  {
+    normalTime: "6:00 PM",
+    timeValue: 18,
+  },
+
+  {
+    normalTime: "7:00 PM",
+    timeValue: 19,
+  },
+
+  {
+    normalTime: "8:00 PM",
+    timeValue: 20,
+  },
+
+  {
+    normalTime: "9:00 PM",
+    timeValue: 21,
+  },
+
+];
 //  create new var
-var currentTimeAttr = moment().format('h')
+var currentTimeAttr = Number(moment().format('HH'));
+console.log(currentTimeAttr)
 
 // Display current date/time on page
 $("#currentDay").append(currentDayEl);
 $("#timeDisplay").append("Time: " + currentTime);
 
-// create for loop to that will 
-// create rows user can input data
-// create button for each row
+// create for loop that generate time-blocks containing rows, hour column, text input column, and button column.
 for (let i = 0; i < calendlyTimes.length; i++) { 
-    // refrring to activities
-    // var createRow = $(".row").text(calendlyTimes[i]);
-    // var createTextArea = $("textarea").text(calendlyTimes[i]);
-    // var createHour = $(".hour").text(calendlyTimes[i]);
+    var hours = calendlyTimes[i].normalTime;
+    var hourVal = calendlyTimes[i].timeValue;
 
     // creating new time-block div
     var createTimeBlocks = $("<div>");
@@ -51,25 +119,24 @@ for (let i = 0; i < calendlyTimes.length; i++) {
     // creating new row div
     var createRow = $("<div>");
     createRow.addClass("row");
-    // createRow.text(calendlyTimes[i]);
-    // createRow.text("ROW PLACE HOLDER");
 
     // creating createTextArea for each row
-    // var createTextArea = $("<div>");
     var createTextArea = $("<input>");
     createTextArea.addClass("textarea col-9");
-    // createTextArea.text(calendlyTimes[i])
-    // createTextArea.text("TEXT AREA PLACE-HOLDER TEXT, REMINDER TO EDIT FONT")
-    // data attri calendlyTimes[i]
-    // if statement less than new var currenttimeAttr
-    // add/remove class from CSS file
-
-    // creating hour column which will populate with the times for each row
+    
+    // if/else statement to populate row color depending on time value (past, present, future)
+    if (calendlyTimes[i].timeValue < currentTimeAttr) {
+      createTextArea.addClass("past");
+    } else if (calendlyTimes[i].timeValue === currentTimeAttr) {
+      createTextArea.addClass("present");
+    } else if (calendlyTimes[i].timeValue > currentTimeAttr) {
+      createTextArea.addClass("future");
+    };
+    // creating hour column which will populate with the hours for each row
     var createHour = $("<div>");
     createHour.addClass("hour col-2");
-    createHour.text(calendlyTimes[i]);
-
-    
+    createHour.text(hours);
+   
     // creating the buttons for each row
     var createBtn = $("<button>");
     createBtn.addClass("saveBtn col-1 fab fa-jedi-order fa-3x");
@@ -82,12 +149,7 @@ for (let i = 0; i < calendlyTimes.length; i++) {
     createTimeBlocks.append(createRow);
     // appending new elements to the new row to appear in the time-block div below the container
     createRow.append(createHour, createTextArea, createBtn);
-    // createRow.append(createTextArea);
-    // createRow.append(createBtn);
 }
-// THEN each time block is color-coded to indicate whether it is in the past, present, or future
-
-// ASk TA about this step is it possible to parse int current time array? (8:00am) or create/remove class with if statement?
 
 // WHEN I click into a time block
 // THEN I can enter an event
@@ -98,37 +160,3 @@ for (let i = 0; i < calendlyTimes.length; i++) {
 // locale storage to save event (button)
 // locale storage (getitem)
 // locale storage (setItem)
-
-//  reference code from activity which inspired idea 
-
-/* <thead>
-<tr>
-  <!-- The scope attribute specifies that this is a header for a column -->
-  <th scope="col">Movie Name</th>
-  <th scope="col">Year</th>
-  <th scope="col">Actors</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>Interstellar</td>
-  <td>2014</td>
-  <td>Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow</td>
-</tr>
-
-</tbody> */
-/* <script type="text/javascript">
-
-var movie = "Space Jam";
-var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function(response) {
-  var newRow = $("<tr>");
-  var newTitle = $("<td>").text(response.Title);
-  var newYear = $("<td>").text(response.Year);
-  var newActors = $("<td>").text(response.Actors);
-  newRow.append(newTitle, newYear, newActors);
-  $("tbody").append(newRow);
-}); */
