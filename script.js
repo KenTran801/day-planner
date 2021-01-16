@@ -98,8 +98,11 @@ for (let i = 0; i < calendlyTimes.length; i++) {
   // creating createTextArea for each row
   var createTextArea = $("<input>");
   createTextArea.addClass("textarea col-9");
+  createTextArea.attr("id", hourVal);
+  // pull in data from local storage to save user inputs
+  createTextArea.val(JSON.parse(localStorage.getItem(hourVal)));
   // if/else statement to populate row color depending on time value (past, present, future)
-  if (calendlyTimes[i].timeValue < currentTimeAttr) {
+  if (calendlyTimes[i].timeValue < currentTimeAttr) {;
     createTextArea.addClass("past");
   } else if (calendlyTimes[i].timeValue === currentTimeAttr) {
     createTextArea.addClass("present");
@@ -123,28 +126,10 @@ for (let i = 0; i < calendlyTimes.length; i++) {
   // locale storage (setItem)
   createBtn.on("click", function (event) {
     event.preventDefault();
-
-    console.log($(this).attr("data-hour"));
-
-    // var eventInput = ($(this).attr("data-hour")).value;
-    var eventInput = ($(this).attr("data-hour", hourVal)).value;
-
-    console.log(eventInput)
-
-    var schedule = JSON.parse(localStorage.getItem("schedule")) || [];
-
-    schedule.push(eventInput)
-
-    localStorage.setItem("schedule", JSON.stringify(schedule));
-
-
-
+    // Assistance from TA, was able to create code to store user input in local storage
+    var eventInput = $("#"+$(this).attr("data-hour")).val();
+    localStorage.setItem($(this).attr("data-hour"), JSON.stringify(eventInput));
   });
-
-
-
-
-
   // appending new time block div to the container class in the HTML file
   $(".container").append(createTimeBlocks);
   // appending new row div to the time-block div
@@ -153,9 +138,5 @@ for (let i = 0; i < calendlyTimes.length; i++) {
   createRow.append(createHour, createTextArea, createBtn);
 }
 
-// WHEN I click into a time block
-// THEN I can enter an event
-// WHEN I click the save button for that time block
-// THEN the text for that event is saved in local storage
 
 
