@@ -1,6 +1,5 @@
 //  create new variables
 var currentDayEl = moment().format('MMMM Do YYYY');
-var currentTime = moment().format('h:mm A');
 // create objects containing string and number
 var calendlyTimes = [
   {
@@ -77,9 +76,8 @@ var calendlyTimes = [
 // variable for current time to compare versus time value
 var currentTimeAttr = Number(moment().format('HH'));
 
-// Display current date/time on page
+// Display current date on page
 $("#currentDay").append(currentDayEl);
-$("#timeDisplay").append("Time: " + currentTime);
 
 // create for loop that generates time-blocks containing rows, hour column, text input column, and button column.
 for (let i = 0; i < calendlyTimes.length; i++) {
@@ -121,9 +119,7 @@ for (let i = 0; i < calendlyTimes.length; i++) {
   createBtn.attr("data-hour", hourVal);
   createBtn.addClass("saveBtn i:hover");
 
-  // locale storage to save event (button)
-  // locale storage (getitem)
-  // locale storage (setItem)
+  // click button to save locale storage (setItem)
   createBtn.on("click", function (event) {
     event.preventDefault();
     // Assistance from TA, was able to create code to store user input in local storage
