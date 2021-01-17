@@ -5,8 +5,8 @@ Objective: Create a calendar application that allows a user to save events for e
 Day Planner features:
 1. Current day is displayed at the top of the page.
 2. User is presented with time blocks for standard business hours.
-3. Each time block is color-coded to indicate whether it is in the past, present, or future.
-4. User is able to click into a time black and enter in an event.
+3. Each time block is color-coded to indicate whether the time is in the past, present, or future.
+4. User is able to click into a time block and enter in an event.
 5. User is able to save the event and the saved event will still appear upon refresh.
 
 ## Links
